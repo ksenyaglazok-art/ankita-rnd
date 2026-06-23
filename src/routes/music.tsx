@@ -60,18 +60,18 @@ function MusicPage() {
                         Ваш браузер не поддерживает аудио.
                       </audio>
                     )}
-                    {t.source_type === "soundcloud" && (
+                    {t.source_type === "soundcloud" && t.source_url && (
                       <iframe
                         width="100%"
                         height="120"
                         scrolling="no"
-                        frameBorder="no"
+                        frameBorder={0 as never}
                         allow="autoplay"
                         src={`https://w.soundcloud.com/player/?url=${encodeURIComponent(t.source_url)}&color=%23ff2bd6&inverse=true&auto_play=false&show_user=true`}
                         title={t.title}
                       />
                     )}
-                    {t.source_type === "youtube" && youtubeId(t.source_url) && (
+                    {t.source_type === "youtube" && t.source_url && youtubeId(t.source_url) && (
                       <div className="aspect-video">
                         <iframe
                           className="w-full h-full"
