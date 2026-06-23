@@ -37,9 +37,9 @@ export function Footer() {
             <li><Link to="/auth" className="text-muted-foreground hover:neon-text-cyan">Вход для администратора</Link></li>
           </ul>
           <div className="flex gap-4 mt-4 text-foreground/80">
-            <a href="#" aria-label="Telegram"><Send size={18} className="hover:neon-text-cyan" /></a>
-            <a href="#" aria-label="Instagram"><Instagram size={18} className="hover:neon-text-pink" /></a>
-            <a href="#" aria-label="Email"><Mail size={18} className="hover:neon-text-cyan" /></a>
+            <a href="https://t.me/Ksenya7rostov" target="_blank" rel="noreferrer" aria-label="Telegram"><Send size={18} className="hover:neon-text-cyan" /></a>
+            <a href="https://max.ru/u/f9LHodD0cOKjygVdNTToBEsP73G9hE232N9AhiLBcgQ-8QyM6H0XpsuYiRM" target="_blank" rel="noreferrer" aria-label="МАКС"><MaxIcon size={18} className="hover:neon-text-pink" /></a>
+            <a href="mailto:f1otrsektor@yandex.ru" aria-label="Email"><Mail size={18} className="hover:neon-text-cyan" /></a>
           </div>
         </div>
       </div>

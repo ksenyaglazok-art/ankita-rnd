@@ -4,7 +4,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
 import { SiteLayout, PageHero } from "@/components/site/SiteLayout";
 import { submitMessage, getSiteContent } from "@/lib/public.functions";
-import { Mail, Send as Telegram, ExternalLink as MaxIcon } from "lucide-react";
+import { Mail, Send as Telegram, ExternalLink as MaxIcon, Loader2, Check } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
 
@@ -14,7 +14,7 @@ export const Route = createFileRoute("/contacts")({
   head: () => ({
     meta: [
       { title: "Контакты — Анкита RND" },
-      { name: "description", content: "Связаться с проектом Анкита RND. Telegram, email, Instagram." },
+      { name: "description", content: "Связаться с проектом Анкита RND. Telegram, email, МАКС." },
       { property: "og:title", content: "Контакты — Анкита RND" },
       { property: "og:description", content: "Связаться с Анкита RND." },
     ],
@@ -66,7 +66,7 @@ function ContactsPage() {
         <div className="space-y-4">
           <ContactRow icon={Mail} label="Email" value={content.contacts_email ?? ""} href={`mailto:${content.contacts_email}`} />
           <ContactRow icon={Telegram} label="Telegram" value={content.contacts_telegram ?? ""} href={`https://t.me/${(content.contacts_telegram ?? "").replace("@", "")}`} />
-          <ContactRow icon={Instagram} label="Instagram" value={content.contacts_instagram ?? ""} href={`https://instagram.com/${(content.contacts_instagram ?? "").replace("@", "")}`} />
+          <ContactRow icon={MaxIcon} label="МАКС" value={content.contacts_max_url ?? ""} href={content.contacts_max_url ?? "#"} />
         </div>
 
         {done ? (
