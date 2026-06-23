@@ -95,11 +95,11 @@ function ContactsPage() {
 
 function ContactRow({ icon: Icon, label, value, href }: { icon: typeof Mail; label: string; value: string; href: string }) {
   return (
-    <a href={href} target="_blank" rel="noreferrer" className="flex items-center gap-4 neon-border-cyan p-5 bg-card hover:neon-glow transition">
-      <Icon className="neon-text-cyan" size={24} />
-      <div>
+    <a href={href} target="_blank" rel="noreferrer" className="flex items-center gap-4 neon-border-cyan p-5 bg-card hover:neon-glow transition min-w-0">
+      <Icon className="neon-text-cyan shrink-0" size={24} />
+      <div className="min-w-0 flex-1">
         <div className="font-display text-xs uppercase tracking-widest text-muted-foreground">{label}</div>
-        <div className="font-display text-lg neon-text-pink">{value || "—"}</div>
+        <div className="font-display text-base neon-text-pink break-all">{value || "—"}</div>
       </div>
     </a>
   );
