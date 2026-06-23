@@ -404,7 +404,7 @@ const CONTENT_FIELDS: { key: string; label: string; rows?: number }[] = [
   { key: "about", label: "О проекте", rows: 8 },
   { key: "contacts_email", label: "Email" },
   { key: "contacts_telegram", label: "Telegram" },
-  { key: "contacts_instagram", label: "Instagram" },
+  { key: "contacts_max_url", label: "МАКС" },
   { key: "privacy", label: "Политика конфиденциальности", rows: 14 },
   { key: "offer", label: "Публичная оферта", rows: 14 },
 ];
