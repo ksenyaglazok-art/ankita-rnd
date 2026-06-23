@@ -3,6 +3,7 @@ import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
 import { SiteLayout, PageHero } from "@/components/site/SiteLayout";
 import { getSiteContent } from "@/lib/public.functions";
 import { Sparkles, Zap, Radio } from "lucide-react";
+import ankitaPhoto from "@/assets/ankita.jpg.asset.json";
 
 const contentQO = queryOptions({ queryKey: ["content"], queryFn: () => getSiteContent() });
 
