@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Send, Mail } from "lucide-react";
+import { ExternalLink as MaxIcon, Send, Mail } from "lucide-react";
 
 export function Footer() {
   return (

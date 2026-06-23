@@ -4,7 +4,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
 import { SiteLayout, PageHero } from "@/components/site/SiteLayout";
 import { submitMessage, getSiteContent } from "@/lib/public.functions";
-import { Mail, Send as Telegram, Instagram, Loader2, Check } from "lucide-react";
+import { Mail, Send as Telegram, ExternalLink as MaxIcon } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
 
