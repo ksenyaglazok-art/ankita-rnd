@@ -21,6 +21,7 @@ const inputCls =
 function AuthPage() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [mode, setMode] = useState<"signin" | "signup">("signin");
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
@@ -34,13 +35,16 @@ function AuthPage() {
     const email = String(form.get("email") ?? "");
     const password = String(form.get("password") ?? "");
     setLoading(true);
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const { error } = mode === "signin"
+      ? await supabase.auth.signInWithPassword({ email, password })
+      : await supabase.auth.signUp({ email, password, options: { emailRedirectTo: `${window.location.origin}/auth` } });
     setLoading(false);
-    if (error) {
-      toast.error(error.message);
-      return;
+    if (error) { toast.error(error.message); return; }
+    if (mode === "signup") {
+      toast.success("Аккаунт создан. Если требуется — подтвердите email.");
+    } else {
+      toast.success("Вход выполнен");
     }
-    toast.success("Вход выполнен");
     navigate({ to: "/_authenticated/admin" as never });
   }
 
@@ -48,18 +52,24 @@ function AuthPage() {
     <SiteLayout>
       <PageHero title="Админ-панель" subtitle="Вход для администратора сайта." />
       <section className="mx-auto max-w-md px-4 pb-20">
+        <div className="flex gap-2 mb-4">
+          <button onClick={() => setMode("signin")} className={`flex-1 py-2 text-xs font-display uppercase tracking-widest ${mode === "signin" ? "neon-border neon-text-pink" : "border border-border text-muted-foreground"}`}>Вход</button>
+          <button onClick={() => setMode("signup")} className={`flex-1 py-2 text-xs font-display uppercase tracking-widest ${mode === "signup" ? "neon-border-cyan neon-text-cyan" : "border border-border text-muted-foreground"}`}>Регистрация</button>
+        </div>
         <form onSubmit={handle} className="neon-border p-6 bg-card grid gap-4">
           <input name="email" type="email" placeholder="Email" required className={inputCls} />
-          <input name="password" type="password" placeholder="Пароль" required className={inputCls} />
+          <input name="password" type="password" placeholder="Пароль (мин. 6 символов)" minLength={6} required className={inputCls} />
           <button
             type="submit"
             disabled={loading}
             className="px-6 py-3 neon-border neon-glow font-display text-sm uppercase tracking-widest disabled:opacity-60 flex items-center justify-center gap-2"
           >
-            {loading ? <Loader2 size={16} className="animate-spin" /> : <LogIn size={16} />} Войти
+            {loading ? <Loader2 size={16} className="animate-spin" /> : <LogIn size={16} />}
+            {mode === "signin" ? "Войти" : "Создать аккаунт"}
           </button>
           <p className="text-xs text-muted-foreground text-center">
-            Только для администратора. Если вы не админ — <Link to="/" className="neon-text-cyan underline">вернитесь на главную</Link>.
+            Доступ к админ-панели предоставляется только администратору.{" "}
+            <Link to="/" className="neon-text-cyan underline">На главную</Link>
           </p>
         </form>
       </section>
