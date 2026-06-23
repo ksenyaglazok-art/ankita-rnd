@@ -13,7 +13,8 @@ function publicClient() {
 
 async function signIfPath(supabase: ReturnType<typeof publicClient>, url: string | null): Promise<string | null> {
   if (!url) return null;
-  if (/^https?:\/\//i.test(url)) return url;
+  // Absolute http(s) URL or root-relative path (e.g. CDN asset) — return as-is
+  if (/^(https?:\/\/|\/)/i.test(url)) return url;
   // Treat as storage path within "media" bucket
   const { data } = await supabase.storage.from("media").createSignedUrl(url, 60 * 60);
   return data?.signedUrl ?? null;
