@@ -4,6 +4,7 @@ import { queryOptions } from "@tanstack/react-query";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { listTracks, getSiteContent } from "@/lib/public.functions";
 import { Music, Mic2, Sparkles, ArrowRight } from "lucide-react";
+import ankitaPhoto from "@/assets/ankita.jpg.asset.json";
 
 const tracksQO = queryOptions({ queryKey: ["tracks"], queryFn: () => listTracks() });
 const contentQO = queryOptions({ queryKey: ["content"], queryFn: () => getSiteContent() });
@@ -61,20 +62,20 @@ function HomePage() {
           </div>
         </div>
 
-        {/* Photo placeholder */}
+        {/* Photo */}
         <div className="relative aspect-[4/5] w-full max-w-md justify-self-center md:justify-self-end">
-          <div className="absolute inset-0 neon-border neon-glow rounded-sm overflow-hidden bg-gradient-to-br from-[#1a0028] via-[#280040] to-[#000820]">
-            <div className="absolute inset-0 cyber-grid-bg opacity-30" />
-            <div className="absolute inset-0 flex items-center justify-center text-center p-6">
-              <div>
-                <Sparkles className="mx-auto mb-3 neon-text-pink" size={40} />
-                <div className="font-display text-xs uppercase tracking-widest text-muted-foreground">
-                  Фото певицы
-                </div>
-                <div className="font-display text-[10px] uppercase tracking-widest text-muted-foreground/60 mt-1">
-                  загрузите через админ-панель
-                </div>
-              </div>
+          <div className="absolute inset-0 neon-border neon-glow rounded-sm overflow-hidden bg-[#0a0014]">
+            <img
+              src={ankitaPhoto.url}
+              alt="Анкита RND — портрет певицы в неоновом свете"
+              className="absolute inset-0 w-full h-full object-cover"
+              loading="eager"
+            />
+            <div className="absolute inset-0 cyber-grid-bg opacity-20 mix-blend-overlay pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#0a0014] to-transparent pointer-events-none" />
+            <div className="absolute bottom-3 left-3 flex items-center gap-2">
+              <Sparkles className="neon-text-pink" size={14} />
+              <span className="font-display text-[10px] uppercase tracking-widest neon-text-cyan">Ankita RND</span>
             </div>
           </div>
           <div className="absolute -bottom-4 -right-4 px-3 py-1 bg-[#ff2bd6] text-[#0a0014] font-display text-[10px] font-bold uppercase tracking-widest">
