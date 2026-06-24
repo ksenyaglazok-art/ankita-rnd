@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
 import { SiteLayout, PageHero } from "@/components/site/SiteLayout";
 import { getSiteContent } from "@/lib/public.functions";
-import { Sparkles, Zap, Radio } from "lucide-react";
+import { Sparkles, Zap, Radio, ExternalLink, Music } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import ankitaPhoto from "@/assets/ankita.jpg.asset.json";
 
 const contentQO = queryOptions({ queryKey: ["content"], queryFn: () => getSiteContent() });
@@ -61,6 +62,35 @@ function AboutPage() {
             <p className="text-sm text-muted-foreground">{c.text}</p>
           </div>
         ))}
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 pb-16">
+        <h2 className="font-display text-2xl uppercase tracking-widest neon-text-cyan mb-6">
+          Проект на музыкальных площадках
+        </h2>
+        <div className="grid gap-4 sm:grid-cols-3">
+          <Button asChild variant="outline" className="neon-border-cyan neon-text-cyan hover:bg-neon-cyan/10 hover:text-neon-cyan w-full justify-between">
+            <a href="https://music.yandex.ru/artist/25304493/" target="_blank" rel="noopener noreferrer">
+              <Music />
+              <span className="flex-1 text-left">Яндекс. Музыка</span>
+              <ExternalLink />
+            </a>
+          </Button>
+          <Button asChild variant="outline" className="neon-border-cyan neon-text-cyan hover:bg-neon-cyan/10 hover:text-neon-cyan w-full justify-between">
+            <a href="https://vk.com/artist/ankita_mtc2odu0mdk4na" target="_blank" rel="noopener noreferrer">
+              <Music />
+              <span className="flex-1 text-left">ВК Музыка</span>
+              <ExternalLink />
+            </a>
+          </Button>
+          <Button asChild variant="outline" className="neon-border-cyan neon-text-cyan hover:bg-neon-cyan/10 hover:text-neon-cyan w-full justify-between">
+            <a href="https://rutube.ru/channel/27100765/" target="_blank" rel="noopener noreferrer">
+              <Music />
+              <span className="flex-1 text-left">Rutube</span>
+              <ExternalLink />
+            </a>
+          </Button>
+        </div>
       </section>
     </SiteLayout>
   );
