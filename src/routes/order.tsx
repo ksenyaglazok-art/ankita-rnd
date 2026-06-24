@@ -24,7 +24,7 @@ type OrderType = "lyrics" | "turnkey";
 const baseFields = z.object({
   name: z.string().trim().min(1, "Введите имя").max(200),
   contact: z.string().trim().min(1, "Введите контакт").max(300),
-  consent: z.literal(true, { errorMap: () => ({ message: "Подтвердите согласие" }) }),
+  consent: z.literal(true, { message: "Подтвердите согласие" }),
 });
 
 function OrderPage() {

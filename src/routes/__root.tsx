@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { CyberBg } from "../components/site/CyberBg";
 import { Toaster } from "@/components/ui/sonner";
+import { BotWidget } from "../components/site/BotWidget";
 
 function NotFoundComponent() {
   return (
@@ -116,6 +117,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <CyberBg />
       <Outlet />
+      <BotWidget />
       <Toaster theme="dark" />
     </QueryClientProvider>
   );
