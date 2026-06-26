@@ -17,7 +17,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-[rgba(255,43,214,0.3)] bg-[rgba(10,0,20,0.85)] backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
-        <Link to="/" className="font-display text-xl font-black tracking-widest neon-text-pink">
+        <Link to="/" className="font-display text-2xl md:text-3xl font-black tracking-widest neon-text-pink">
           АНКИТА<span className="neon-text-cyan ml-1">RND</span>
         </Link>
 
